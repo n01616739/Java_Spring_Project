@@ -4,24 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager - Leave History</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/leaveHistory.css">
 </head>
 <body>
-<div class="container mt-5">
+<div class="container">
     <h2>Manager - Leave History</h2>
 
-    <!-- Display leave history -->
     <div class="mb-3">
         <h4>Leave History</h4>
 
-        <!-- Check if there are leave requests -->
         <div th:if="${#lists.isEmpty(allLeaveRequests)}">
-            <p>No leave history available.</p>  <!-- Message when there are no leave requests -->
+            <p>No leave history available.</p>
         </div>
 
-        <!-- Display table of leave history if not empty -->
         <div th:unless="${#lists.isEmpty(allLeaveRequests)}">
-            <table class="table">
+            <table>
                 <thead>
                 <tr>
                     <th>Employee</th>
@@ -38,7 +35,8 @@
                     <td th:text="${leaveRequest.leaveType}"></td>
                     <td th:text="${leaveRequest.duration}"></td>
                     <td th:text="${leaveRequest.reason}"></td>
-                    <td th:text="${leaveRequest.approvalStatus}"></td>
+                    <td th:text="${leaveRequest.approvalStatus}"
+                        th:classappend="'status-' + ${leaveRequest.approvalStatus.toLowerCase()}"></td>
                     <td th:text="${leaveRequest.managerComment}"></td>
                 </tr>
                 </tbody>
@@ -46,8 +44,5 @@
         </div>
     </div>
 </div>
-
-<!-- Include Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

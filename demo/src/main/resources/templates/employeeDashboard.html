@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,11 @@
 </head>
 <body>
 <div class="container">
+    <p class="welcome-text" th:if="${session.user != null}">
+        <span class="wave">👋</span>
+        Welcome, <span class="username" th:text="${session.user.username}">Manager</span>
+    </p>
+
     <h2>Employee Dashboard</h2>
 
     <section class="leave-balance">

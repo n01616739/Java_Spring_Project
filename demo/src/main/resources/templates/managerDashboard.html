@@ -8,6 +8,11 @@
 </head>
 <body>
 <div class="container">
+    <p class="welcome-text" th:if="${session.user != null}">
+        <span class="wave">👋</span>
+        Welcome, <span class="username" th:text="${session.user.username}">Manager</span>
+    </p>
+
     <!-- Header Section -->
     <section class="dashboard-header">
         <h2 class="center-title">Manager Dashboard</h2>
